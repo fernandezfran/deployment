@@ -1,5 +1,5 @@
 # Package Overview
-package_name: regression_model
+package_name: model
 
 # Data Files
 training_data_file: train.csv
