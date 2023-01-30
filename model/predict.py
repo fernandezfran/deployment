@@ -24,8 +24,9 @@ def make_prediction(
         predictions = _titanic_pipe.predict(
             X=validated_data[config.model_config.features]
         )
+        predictions = list(predictions)
         results = {
-            "predictions": list(predictions),
+            "predictions": predictions,
             "version": _version,
             "errors": errors,
         }
