@@ -1,9 +1,8 @@
-from typing import Any
+import typing as t
 
-from fastapi import APIRouter, FastAPI, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import HTMLResponse
-from loguru import logger
+import fastapi
+import fastapi.middleware.cors
+import loguru
 
 from app.api import api_router
 from app.config import settings, setup_app_logging
@@ -12,15 +11,15 @@ from app.config import settings, setup_app_logging
 setup_app_logging(config=settings)
 
 
-app = FastAPI(
+app = fastapi.FastAPI(
     title=settings.PROJECT_NAME, openapi_url=f"{settings.API_V1_STR}/openapi.json"
 )
 
-root_router = APIRouter()
+root_router = fastapi.APIRouter()
 
 
 @root_router.get("/")
-def index(request: Request) -> Any:
+def index(request: fastapi.Request) -> t.Any:
     """Basic HTML response."""
     body = (
         "<html>"
@@ -33,7 +32,7 @@ def index(request: Request) -> Any:
         "</html>"
     )
 
-    return HTMLResponse(content=body)
+    return fastapi.responses.HTMLResponse(content=body)
 
 
 app.include_router(api_router, prefix=settings.API_V1_STR)
@@ -42,7 +41,7 @@ app.include_router(root_router)
 # Set all CORS enabled origins
 if settings.BACKEND_CORS_ORIGINS:
     app.add_middleware(
-        CORSMiddleware,
+        fastapi.middleware.cors.CORSMiddleware,
         allow_origins=[str(origin) for origin in settings.BACKEND_CORS_ORIGINS],
         allow_credentials=True,
         allow_methods=["*"],
@@ -52,7 +51,9 @@ if settings.BACKEND_CORS_ORIGINS:
 
 if __name__ == "__main__":
     # Use this for debugging purposes only
-    logger.warning("Running in development mode. Do not run like this in production.")
+    loguru.logger.warning(
+        "Running in development mode. Do not run like this in production."
+    )
     import uvicorn
 
     uvicorn.run(app, host="localhost", port=8001, log_level="debug")

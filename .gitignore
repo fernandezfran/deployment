@@ -1,6 +1,7 @@
 .ipynb_checkpoints/
 .tox/
 __pycache__/
+*pyc
 *pkl
 *csv
 tid_titanic_model.egg-info/

@@ -1,7 +1,7 @@
-from typing import Generator
+import typing as t
 
+import fastapi.testclient
 import pytest
-from fastapi.testclient import TestClient
 
 from app.main import app
 
@@ -27,7 +27,7 @@ def test_data():
 
 
 @pytest.fixture()
-def client() -> Generator:
-    with TestClient(app) as _client:
+def client() -> t.Generator:
+    with fastapi.testclient.TestClient(app) as _client:
         yield _client
         app.dependency_overrides = {}
