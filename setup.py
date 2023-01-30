@@ -6,7 +6,7 @@ from pathlib import Path
 from setuptools import find_packages, setup
 
 # Package meta-data.
-NAME = 'tid-titanic-classification-model'
+NAME = "tid-titanic-model"
 DESCRIPTION = "Example Titanic dataset classification model package from Train In Data."
 URL = "https://github.com/trainindata/deploying-machine-learning-models"
 EMAIL = "christopher.samiullah@protonmail.com"
@@ -25,8 +25,8 @@ long_description = DESCRIPTION
 # Load the package's VERSION file as a dictionary.
 about = {}
 ROOT_DIR = Path(__file__).resolve().parent
-REQUIREMENTS_DIR = ROOT_DIR / 'requirements'
-PACKAGE_DIR = ROOT_DIR / 'classification_model'
+REQUIREMENTS_DIR = ROOT_DIR / "requirements"
+PACKAGE_DIR = ROOT_DIR / "model"
 with open(PACKAGE_DIR / "VERSION") as f:
     _version = f.read().strip()
     about["__version__"] = _version
