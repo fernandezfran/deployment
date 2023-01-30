@@ -36,7 +36,6 @@ unused_fields:
   - ticket
   - boat
   - body
-  - home.dest
 
 # variables types
 numerical_vars:
