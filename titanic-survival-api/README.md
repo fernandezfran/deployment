@@ -1,7 +1,7 @@
 # deployment
 
 in this branch we use our developed classification model and deploy an 
-application with FastAPI in a local docker container
+application with FastAPI
 
 ## simple instructions to run with tox
 
