@@ -11,3 +11,6 @@ is the research and development of the model
 is the production of the model package with continuous integration using ghactions
 - the deployed serving application using the previous develped model package and
 docker as container can be found [here](https://github.com/fernandezfran/deployment/tree/model-serving-api)
+- at last, there is an [extra branch](https://github.com/fernandezfran/deployment/tree/cnn-with-big-data) 
+with the section of deep learning model with big data using the v2 plant seedlings
+dataset
